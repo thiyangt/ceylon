@@ -11,3 +11,4 @@
 ^data_pretrained_fforms$
 ^codecov\.yml$
 ^cran-comments\.md$
+^LICENSE\.md$

@@ -7,14 +7,11 @@ Authors@R:
            role = c("aut", "cre"),
            email = "ttalagala@sjp.ac.lk",
            comment = c(ORCID = "0000-0002-0656-9789"))
-Description: Maps of Sri Lanka administrative regions, levels 0 (country), 
-1 (province), 2 (district), 3 (divisional secretariat) and 4 (grama niladhari). In-built functions 
-for  choropleths and other related maps.
+Description: Maps of Sri Lanka administrative regions, 0-country, 1-province, 2-district, 3-divisional secretariat and 4-grama niladhari. R functions for  choropleths and other related maps.
 Imports:
         sf,
         tidyverse
-License: `use_mit_license()`, `use_gpl3_license()` or friends to
-    pick a license
+License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
