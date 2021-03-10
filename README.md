@@ -7,7 +7,7 @@
 
 <!-- badges: end -->
 
-The goal of ceylon is to …
+The goal of ceylon is to plot maps of Sri Lanka.
 
 ## Installation
 
@@ -53,7 +53,25 @@ ggplot(sf_sl_0) + geom_sf()
 
 ``` r
 data(sf_sl_1)
-ggplot(sf_sl_1) + geom_sf()
+sf_sl_1
+#> Simple feature collection with 9 features and 1 field
+#> geometry type:  MULTIPOLYGON
+#> dimension:      XY
+#> bbox:           xmin: 362203.3 ymin: 380301.9 xmax: 621918.1 ymax: 813560.9
+#> projected CRS:  SLD99 / Sri Lanka Grid 1999
+#> # A tibble: 9 x 2
+#>                                                             geometry PROVINCE   
+#>                                                   <MULTIPOLYGON [m]> <chr>      
+#> 1 (((498211.2 611042.6, 498401.7 610897.1, 498415.9 610886.3, 49862… CENTRAL    
+#> 2 (((609877 559315.9, 609857.5 559313, 609845.2 559319.5, 609838.7 … EASTERN    
+#> 3 (((501928.5 712099.6, 501970.4 712098.8, 502020 712108.4, 502064.… NORTH CENT…
+#> 4 (((393087.5 629959, 393098.1 629956.7, 393103.2 629956.7, 393108.… NORTH WEST…
+#> 5 (((405858.7 700083.7, 405855.3 700082, 405851.5 700082.9, 405800.… NORTHERN   
+#> 6 (((432117.3 521875.5, 432083.5 521852.9, 432041.7 521860.8, 43204… SABARAGAMU…
+#> 7 (((481925.5 381353.7, 481922.9 381350.3, 481919 381348.2, 481914.… SOUTHERN   
+#> 8 (((522825 568220.9, 522872.6 568217.7, 522926.1 568222.5, 523017.… UVA        
+#> 9 (((411888.2 438189.4, 411886.4 438182.3, 411881.7 438182.2, 41187… WESTERN
+ggplot(sf_sl_1) + geom_sf(mapping = aes(fill = PROVINCE), show.legend = TRUE)
 ```
 
 <img src="man/figures/README-example1-1.png" width="100%" />
@@ -62,7 +80,7 @@ ggplot(sf_sl_1) + geom_sf()
 
 ``` r
 data(sf_sl_2)
-ggplot(sf_sl_2) + geom_sf()
+ggplot(sf_sl_2) + geom_sf(mapping = aes(fill = DISTRICT), show.legend = FALSE)
 ```
 
 <img src="man/figures/README-example2-1.png" width="100%" />

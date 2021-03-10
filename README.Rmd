@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of ceylon is to ...
+The goal of ceylon is to plot maps of Sri Lanka.
 
 ## Installation
 
@@ -52,14 +52,15 @@ ggplot(sf_sl_0) + geom_sf()
 
 ```{r example1}
 data(sf_sl_1)
-ggplot(sf_sl_1) + geom_sf()
+sf_sl_1
+ggplot(sf_sl_1) + geom_sf(mapping = aes(fill = PROVINCE), show.legend = TRUE)
 ```
 
 ### 2. District level
 
 ```{r example2}
 data(sf_sl_2)
-ggplot(sf_sl_2) + geom_sf()
+ggplot(sf_sl_2) + geom_sf(mapping = aes(fill = DISTRICT), show.legend = FALSE)
 ```
 
 ### 3. Divisional secretariat
