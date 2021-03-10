@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "ttalagala@sjp.ac.lk",
            comment = c(ORCID = "0000-0002-0656-9789"))
-Description: Map of Sri Lanka administrative regions, 0-country, 1-province, 2-district, 3-divisional secretariat and 4-grama niladhari. R functions for  choropleths and other related maps.
+Description: Map of Sri Lanka administrative regions, 0-country, 1-province, 2-district and 3-divisional secretariat. R functions for  choropleths and other related maps.
 Depends: R (>= 3.5.0)
 Imports:
         sf,
