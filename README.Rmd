@@ -38,23 +38,34 @@ devtools::install_github("thiyangt/ceylon")
 
 This is a basic example which shows you how to solve a common problem:
 
+### 0. Country level
+
 ```{r example}
 library(ceylon)
-## basic example code
+library(tidyverse)
+library(sp)
+data(sf_sl_0)
+ggplot(sf_sl_0) + geom_sf()
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+### 1. Province level
 
-```{r cars}
-summary(cars)
+```{r example1}
+data(sf_sl_1)
+ggplot(sf_sl_1) + geom_sf()
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/master/examples>.
+### 2. District level
 
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
+```{r example2}
+data(sf_sl_2)
+ggplot(sf_sl_2) + geom_sf()
 ```
 
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
+### 3. Divisional secretariat
+
+```{r example3}
+data(sf_sl_3)
+ggplot(sf_sl_3) + geom_sf()
+```
+
