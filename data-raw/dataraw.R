@@ -95,8 +95,9 @@ pop_data_district <- pop_table %>%
   select(DISTRICT = Name, Status,
          population = `PopulationEstimate2020-07-01`) %>% 
   filter(Status == "District") %>% 
-  mutate(DISTRICT = str_to_upper(DISTRICT))
-
+  mutate(DISTRICT = str_to_upper(DISTRICT)) %>% 
+mutate(DISTRICT = ifelse(
+  DISTRICT == "MONERAGALA", "MONARAGALA", DISTRICT))
 
 
 district <- left_join(sf_sl_2, pop_data_district,
