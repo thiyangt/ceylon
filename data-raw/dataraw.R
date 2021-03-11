@@ -47,14 +47,31 @@ pop_table <- bow(pop_url) %>%
   rvest::html_table() %>% 
   purrr::pluck(1)
 pop_data_province <- pop_table %>% 
-  select(DISTRICT = Name, Status,
+  select(PROVINCE = Name, Status,
          population = `PopulationEstimate2020-07-01`) %>% 
   filter(Status == "Province") 
+pop_data_province <- pop_data_province %>% 
+  # use province name from sf_sl_1
+  mutate(PROVINCE = case_when(
+    PROVINCE == "Central (Madhyama)" ~ "Central",
+    PROVINCE == "Eastern (Kilakku, Negenahira)" ~ "Eastern",
+    PROVINCE == "North Central (Uturumeda)" ~ "North Central",
+    PROVINCE == "Northern (Vatakku, Uturu)" ~ "Northern",
+    PROVINCE == "North Western (Wayamba)" ~ "North Western",
+    PROVINCE == "Sabaragamuwa" ~ "Sabaragamuwa",
+    PROVINCE == "Southern (Dakunu)" ~ "Southern",
+    PROVINCE == "Uva" ~ "Uva",
+    PROVINCE == "Western (Basnahira)" ~ "Western",
+    TRUE ~ PROVINCE)) %>% 
+    mutate(PROVINCE = str_to_upper(PROVINCE))
 
 
-
-districts <- left_join(sf_sl_2, pop_data_district,
-                       by = c("DISTRICT"))
+province <- left_join(sf_sl_1, pop_data_province,
+                       by = c("PROVINCE"))
+province <- province %>% mutate(population = parse_number(population))
+ggplot(province) + 
+  geom_sf() 
+save(province, file="data/province.rda", compress='xz')
 
 ## ----ad2:district
 sf_sl_2 <- read_sf("data-raw/lka_adm_slsd_20200305_shp/lka_admbnda_adm2_slsd_20200305.shp") %>%
@@ -82,9 +99,12 @@ pop_data_district <- pop_table %>%
 
 
 
-districts <- left_join(sf_sl_2, pop_data_district,
+district <- left_join(sf_sl_2, pop_data_district,
                                 by = c("DISTRICT"))
-save(districts, file="data/districts.rda", compress='xz')
+
+district <- district %>% mutate(population = parse_number(population))
+
+save(district, file="data/district.rda", compress='xz')
 
 ## ----ad3:divisional secratariat
 sf_sl_3 <- read_sf("data-raw/lka_adm_slsd_20200305_shp/lka_admbnda_adm3_slsd_20200305.shp") %>%
