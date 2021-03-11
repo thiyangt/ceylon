@@ -1,9 +1,11 @@
-#' Province level shape file data
-#'@description shape file data for district level
+#' District level shape file data and estimated estimated population (2020)
+#'@description shape file data and population data for district level
 #'\describe{
 #'\item{DISTRICT}{district name}
-#'\item{geometry}{Multipolygon}}
+#'\item{geometry}{multipolygon}
+#'\item{population}{district population}}
 #'@source https://data.humdata.org/dataset/sri-lanka-administrative-levels-0-4-boundaries
+#'@source https://www.citypopulation.de/en/srilanka/prov/admin/
 #'@example
-#'data(sf_sl_2)
-"sf_sl_2"
+#'data(district)
+"district"

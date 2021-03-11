@@ -22,13 +22,7 @@ The goal of ceylon is to plot maps of Sri Lanka.
 
 ## Installation
 
-You can install the released version of ceylon from [CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("ceylon")
-```
-
-And the development version from [GitHub](https://github.com/) with:
+You can install the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
@@ -38,35 +32,46 @@ devtools::install_github("thiyangt/ceylon")
 
 This is a basic example which shows you how to solve a common problem:
 
-### 0. Country level
+### 1. Country level
 
 ```{r example}
 library(ceylon)
 library(tidyverse)
 library(sp)
+library(viridis)
 data(sf_sl_0)
 ggplot(sf_sl_0) + geom_sf()
 ```
 
-### 1. Province level
+### 2. Provinces of Sri Lanka
+
+```{r example0}
+data(province)
+province
+ggplot(province) + geom_sf(mapping = aes(fill = PROVINCE), show.legend = TRUE)
+```
+
+### 3. Distribution of Population by Provinces
 
 ```{r example1}
-data(sf_sl_1)
-sf_sl_1
-ggplot(sf_sl_1) + geom_sf(mapping = aes(fill = PROVINCE), show.legend = TRUE)
+ggplot(province) + geom_sf(mapping = aes(fill = population), show.legend = TRUE) + scale_fill_viridis(option = "inferno")
 ```
 
-### 2. District level
+### 4. Distribution of Population by Districts
 
 ```{r example2}
-data(sf_sl_2)
-ggplot(sf_sl_2) + geom_sf(mapping = aes(fill = DISTRICT), show.legend = FALSE)
+data(district)
+ggplot(district) + geom_sf(aes(fill = population), show.legend = TRUE) +  scale_fill_viridis()
 ```
 
-### 3. Divisional secretariat
+### 5. Divisional secretariat
 
 ```{r example3}
 data(sf_sl_3)
 ggplot(sf_sl_3) + geom_sf()
 ```
 
+
+### Acknowledgement
+
+This package is inspired by the talk given by [Stephanie Kobakian](https://srk.netlify.app/) at [R-Ladies Colombo meetup](https://rladiescolombo.netlify.app/talk/3_map/).
