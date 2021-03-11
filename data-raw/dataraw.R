@@ -1,6 +1,10 @@
 ## ----pkg
 library(tidyverse)
 library(sf)
+library(rvest) # population data web scrapping
+library(scrapeR) # population data web scrapping
+library(polite) # population data web scrapping
+
 
 ## ---- datafilelinks
 #https://data.humdata.org/dataset/sri-lanka-administrative-levels-0-4-boundaries
@@ -33,9 +37,24 @@ class(sf_sl_1)
 sf_sl_1 <- sf_sl_1 %>% 
   mutate(PROVINCE = str_to_upper(ADM1_EN)) %>% 
   select(-ADM1_EN)
-save(sf_sl_1, file="data/sf_sl_1.rda", compress='xz')
+#save(sf_sl_1, file="data/sf_sl_1.rda", compress='xz')
 ggplot(sf_sl_1) + 
   geom_sf() 
+
+pop_url <- "https://www.citypopulation.de/en/srilanka/prov/admin/"
+pop_table <- bow(pop_url) %>% 
+  scrape() %>% 
+  rvest::html_table() %>% 
+  purrr::pluck(1)
+pop_data_province <- pop_table %>% 
+  select(DISTRICT = Name, Status,
+         population = `PopulationEstimate2020-07-01`) %>% 
+  filter(Status == "Province") 
+
+
+
+districts <- left_join(sf_sl_2, pop_data_district,
+                       by = c("DISTRICT"))
 
 ## ----ad2:district
 sf_sl_2 <- read_sf("data-raw/lka_adm_slsd_20200305_shp/lka_admbnda_adm2_slsd_20200305.shp") %>%
@@ -45,9 +64,27 @@ class(sf_sl_2)
 sf_sl_2 <- sf_sl_2 %>% 
   mutate(DISTRICT = str_to_upper(ADM2_EN)) %>% 
   select(-ADM2_EN)
-save(sf_sl_2, file="data/sf_sl_2.rda", compress='xz')
+#save(sf_sl_2, file="data/sf_sl_2.rda", compress='xz')
 ggplot(sf_sl_2) + 
   geom_sf() 
+
+
+pop_url <- "https://www.citypopulation.de/en/srilanka/prov/admin/"
+pop_table <- bow(pop_url) %>% 
+  scrape() %>% 
+  rvest::html_table() %>% 
+  purrr::pluck(1)
+pop_data_district <- pop_table %>% 
+  select(DISTRICT = Name, Status,
+         population = `PopulationEstimate2020-07-01`) %>% 
+  filter(Status == "District") %>% 
+  mutate(DISTRICT = str_to_upper(DISTRICT))
+
+
+
+districts <- left_join(sf_sl_2, pop_data_district,
+                                by = c("DISTRICT"))
+save(districts, file="data/districts.rda", compress='xz')
 
 ## ----ad3:divisional secratariat
 sf_sl_3 <- read_sf("data-raw/lka_adm_slsd_20200305_shp/lka_admbnda_adm3_slsd_20200305.shp") %>%
@@ -70,4 +107,17 @@ sf_sl_4
 save(sf_sl_4, file="data/sf_sl_4.rda", compress='xz')
 ggplot(sf_sl_4) + 
   geom_sf() 
+
+## ---- population
+
+pop_url <- "https://www.citypopulation.de/en/srilanka/prov/admin/"
+pop_table <- bow(pop_url) %>% 
+  scrape() %>% 
+  rvest::html_table() %>% 
+  purrr::pluck(1)
+pop_data_district <- pop_table %>% 
+  select(DISTRICT = Name, Status,
+         population = `PopulationEstimate2020-07-01`) %>% 
+  filter(Status == "District")
+pop_sl_1 <- pop_data_district
 
