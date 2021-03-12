@@ -1,13 +1,13 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ceylon
+# ceylondata
 
 <!-- badges: start -->
 
 <!-- badges: end -->
 
-The goal of ceylon is to plot maps of Sri Lanka.
+The goal of ceylondata is to provide data to plot maps of Sri Lanka.
 
 ## Installation
 
@@ -16,7 +16,7 @@ You can install the development version from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("thiyangt/ceylon")
+devtools::install_github("thiyangt/ceylondata")
 ```
 
 ## Example
@@ -26,7 +26,7 @@ This is a basic example which shows you how to solve a common problem:
 ### 1\. Country level
 
 ``` r
-library(ceylon)
+library(ceylondata)
 library(tidyverse)
 #> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
 #> ✓ ggplot2 3.3.3     ✓ purrr   0.3.4

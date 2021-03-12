@@ -1,4 +1,4 @@
-Package: ceylon
+Package: ceylondata
 Title: Sri Lanka Maps
 Version: 0.0.0.9000
 Authors@R: 
@@ -12,7 +12,7 @@ Depends: R (>= 3.5.0)
 Imports:
         sf,
         tidyverse
-License: GPL (>= 3)
+License: CC BY 4.0
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
