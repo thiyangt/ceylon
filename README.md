@@ -1,12 +1,12 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ceylon
+# ceylon <a href='https://github.com/thiyangt/covid19srilanka'><img src='man/figures/hex.png' align="right"  width="200"/></a>
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of ceylondata is to provide data to plot maps of Sri Lanka.
+The goal of ceylon is to provide data to plot maps of Sri Lanka.
 
 ## Installation
 
@@ -29,8 +29,8 @@ library(ceylon)
 library(tidyverse)
 #> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
 #> ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
-#> ✓ tibble  3.1.2     ✓ dplyr   1.0.7
-#> ✓ tidyr   1.1.3     ✓ stringr 1.4.0
+#> ✓ tibble  3.1.5     ✓ dplyr   1.0.7
+#> ✓ tidyr   1.1.4     ✓ stringr 1.4.0
 #> ✓ readr   1.4.0     ✓ forcats 0.5.1
 #> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 #> x dplyr::filter() masks stats::filter()
@@ -54,7 +54,7 @@ province
 #> Dimension:     XY
 #> Bounding box:  xmin: 362203.3 ymin: 380301.9 xmax: 621918.1 ymax: 813560.9
 #> Projected CRS: SLD99 / Sri Lanka Grid 1999
-#> # A tibble: 9 x 4
+#> # A tibble: 9 × 4
 #>                                           geometry PROVINCE    Status population
 #> *                               <MULTIPOLYGON [m]> <chr>       <chr>       <dbl>
 #> 1 (((498211.2 611042.6, 498401.7 610897.1, 498415… CENTRAL     Provi…    2781000
