@@ -6,6 +6,8 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
+![<https://zenodo.org/badge/DOI/10.5281/zenodo.10432141.svg>](https://zenodo.org/badge/DOI/10.5281/zenodo.10432141.svg)
+
 The goal of ceylon is to provide data to plot maps of Sri Lanka.
 
 ## Installation
@@ -115,6 +117,12 @@ ggplot(data = sf_sl_0) +
 ```
 
 <img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
+
+## Cite
+
+Talagala, T. S. (2023). ceylon: Creating Maps of Sri Lanka
+Administrative Regions, Rivers and Streams. Zenodo.
+<https://doi.org/10.5281/zenodo.10432141>
 
 ### Acknowledgement
 
