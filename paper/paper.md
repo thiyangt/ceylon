@@ -11,7 +11,6 @@ output: pdf_document
 authors:
 - name: Thiyanga S. Talagala
   orcid: "0000-0002-0656-9789"
-  equal-contrib: true
   affiliation: '1'
 bibliography: paper.bib
 affiliations:
@@ -21,17 +20,19 @@ affiliations:
 
 # Summary
 
-The rapid evolution in the fields of computer science, data science and Artificial Intelligence has significantly transformed the utilization of data for decision making. Data visualisation plays a critical role in any work that involves data. Visualizing data on maps is frequently encountered in many fields. Visualizing data on maps not only transforms raw data into visually comprehensible representations but also convert complex spatial information into simple understandable form. Locating data files necessary for map creation can be a challenging task. Establishing a centralized repository can alleviate the challenging task of finding shape files, providing  users to efficiently discover geographic data. The  ceylon [@ceylon] R package is  designed to make  simple features data related to Sri Lanka's administrative boundaries and rivers and streams accessible for a diverse range of R [@r] users. With straightforward functionalities, this package allows users to quickly plot and explore administrative boundaries and rivers and streams in Sri Lanka.
+The rapid evolution in the fields of computer science, data science, and artificial intelligence has significantly transformed the utilisation of data for decision-making. Data visualisation plays a critical role in any work that involves data. Visualising data on maps is frequently encountered in many fields. Visualising data on maps not only transforms raw data into visually comprehensible representations but also converts complex spatial information into simple, understandable form. Locating the data files necessary for map creation can be a challenging task. Establishing a centralised repository can alleviate the challenging task of finding shape files, allowing users to efficiently discover geographic data. The  ceylon [@ceylon] R package is designed to make simple feature data related to Sri Lanka's administrative boundaries and rivers and streams accessible for a diverse range of R [@r] users. With straightforward functionalities, this package allows users to quickly plot and explore administrative boundaries and rivers and streams in Sri Lanka.
 
 
 
 
 # Statement of Need
 
+The `ceylon` R package conveniently packages shape files corresponding to the geographic features of Sri Lanka, enhancing user friendliness for seamless integration and analysis. This allows for minimising the time spent on data searching and cleaning efforts. Hence, the package ceylon stands out as a catalyst for research efficiency. Furthermore, the package supports research reproducibility, allowing others to independently verify and build upon the work that utilises the data in this package. The data format easily integrates with tidyverse packages [@tidyverse], fostering a smooth workflow.
 
-The `ceylon` R package conveniently packages shape files corresponding to the geographic features of Sri Lanka, enhancing user-friendliness for seamless integration and analysis. This allows minimizing the time spent on data searching and cleaning efforts and Hence, the package ceylon stands out as a catalyst for research efficiency.Furthermore, the package support for research reproducibility allowing others to independently verify and build upon the work that utilize the data in this package. The data format easily integrates with tidyverse packages [@tidyverse], fostering a smooth workflow.
 
 # Datasets available in the package
+
+The data were retrieved from the   @humdata. The Humanitarian Data Exchange is a platform that facilitates the sharing and collaboration of humanitarian data. The coordinate reference system (CRS) for the data is "Projected CRS: SLD99 / Sri Lanka Grid 1999 (CRS code 5234)".
 
 | dataset  | description  |  data source  |
 |---|---|---|
@@ -40,6 +41,10 @@ The `ceylon` R package conveniently packages shape files corresponding to the ge
 |district   | district boundaries  | https://data.humdata.org/   |
 |sf_sl_3   | divisional secretariat boundaries | https://data.humdata.org/   |
 |rivers  |Sri Lanka rivers and streams shapefiles  | https://data.humdata.org/   |
+
+
+
+Table 1: Description of data in the pacakge
 
 # Usage
 
@@ -55,7 +60,7 @@ library(ceylon)
 
 
 
-Additional packages require for plotting  are as follows:
+The additional packages required for plotting are as follows:
 
 ```r
 library(ggplot2)
@@ -65,7 +70,7 @@ library(viridis)
 library(patchwork)
 ```
 
-The package ggplot2[@ggplot2] is used for data visualization. The sp[@sp] provides tools for handling spatial data. The sf simple features[@sf]  builds upon the strengths of the sp package, introducing  efficient approach to handling spatial data.The viridis [@viridis] package provides a collection of color palettes that are color blind friendly.The patchwork [@patchwork] is used for combination and arrangement of multiple plots.
+The package ggplot2[@ggplot2] is used for data visualization. The sp[@sp] provides tools for handling spatial data. The sf simple features[@sf]  builds upon the strengths of the sp package, introducing  efficient approach to handling spatial data.The viridis [@viridis] package provides a collection of color palettes that are color blind friendly.The patchwork [@patchwork] is used for the combination and arrangement of multiple plots. Figure 1 shows the visualizations of  Sri Lanka's administrative borders data available in the `ceylon` package. The codes to produce Figure 1 is given below.
 
 ```r
 data(sf_sl_0)
@@ -76,9 +81,6 @@ data(district)
 c <- ggplot(district) + geom_sf() + ggtitle("c: District")
 data(sf_sl_3)
 d <- ggplot(sf_sl_3) + geom_sf() + ggtitle("d: Divisional Secretariat")
-```
-
-```r
 (a|b|c|d)
 ```
 
@@ -88,7 +90,7 @@ d <- ggplot(sf_sl_3) + geom_sf() + ggtitle("d: Divisional Secretariat")
 
 ## Point Map: Adding a point to the map
 
-The Global Positioning System (GPS) coordinates of Bandaranaike International Airport, Sri Lanka is Latitude: 7.1753 Longitude: 79.8835. The goal is to plot this point along with the province boundaries. The EPSG:4326 geographic CRS system gives latitude and longitude coordinates to specify a location on the surface of the earth. Hence, before plotting first longitude and latitudes should be converted into sf object to the same coordinate reference system as the province data set. For ths we use sp[@sp] and sf [@sf] packages in R. In the following code `st_as_sf` specify the current coordinate reference system for longitude and latitude. The function `st_transform` convert the current CRS to target CRS. The target CRS is the CRS associated with province which is defined as `crs = st_crs(province)` inside the `st_transform` function.
+The Global Positioning System (GPS) coordinates of Bandaranaike International Airport, Sri Lanka is Latitude: 7.1753 Longitude: 79.8835. The goal is to plot this point along with the province boundaries. The EPSG:4326 geographic CRS system gives latitude and longitude coordinates to specify a location on the surface of the earth. Hence, before plotting, first longitude and latitudes should be converted into sf object to the same coordinate reference system as the province data set. For this the sp [@sp] and sf [@sf] packages in R were used. In the following code `st_as_sf` specify the current coordinate reference system for longitude and latitude. The function `st_transform` converts the current CRS to the target CRS. The target CRS is the CRS associated with the province, which is defined as `crs = st_crs(province)` inside the'st_transform' function.
 
 ```r
 airport <- data.frame(lng = 79.8835, lat = 7.1753)
@@ -115,7 +117,7 @@ line <- ggplot(data = sf_sl_0) +
 
 ## Polygon Map: Creating a choropleth map
 
-A choropleth map shows different regions coloured according to the numerical values associated with each individual region.
+A Choropleth map shows different regions coloured according to the numerical values associated with each individual region.
 
 ```r
 polygon <- ggplot(province) + 
@@ -126,6 +128,10 @@ polygon <- ggplot(province) +
 ```r
 (point|line|polygon)
 ```
+
+Figure 2 shows the point, line, and polygon maps created using the data available in the `ceylon` package.
+
+
 
 ![Illustration of point, line and polygon map  \label{fig: img2}](Rplot2.png)
 
