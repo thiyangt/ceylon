@@ -1,6 +1,6 @@
 Package: ceylon
 Title: Sri Lanka Maps
-Version: 0.0.0.9000
+Version: 1.0.0
 Authors@R: 
     person(given = "Thiyanga S.",
            family = "Talagala",
@@ -9,11 +9,8 @@ Authors@R:
            comment = c(ORCID = "0000-0002-0656-9789"))
 Description: Map of Sri Lanka administrative regions, 0-country, 1-province, 2-district and 3-divisional secretariat. R functions for  choropleths and other related maps.
 Depends: R (>= 3.5.0)
-Imports:
-        sf,
-        tidyverse
 License: CC BY 4.0
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.3

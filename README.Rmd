@@ -71,6 +71,15 @@ data(sf_sl_3)
 ggplot(sf_sl_3) + geom_sf()
 ```
 
+### Plotting river network
+
+```{r}
+data("rivers")
+ggplot(data = sf_sl_0) +
+  geom_sf(fill="#edf8b1", color="#AAAAAA") +
+  geom_sf(data=rivers, colour="#253494") +
+  labs(title =  "Sri Lanka Rivers and Streams")
+```
 
 ### Acknowledgement
 

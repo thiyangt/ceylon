@@ -142,3 +142,25 @@ pop_data_district <- pop_table %>%
   filter(Status == "District")
 pop_sl_1 <- pop_data_district
 
+
+## river network data (2023-12-26)
+#https://blog.benthies.de/blog/mapping-streams-and-rivers-with-ggplot-sf/
+# Packages
+library(dplyr) # Data manipulation
+library(ggplot2) # Plotting
+library(sf) # Geometric operations
+library(ceylon)
+library(sp)
+
+# Sri Lanka Rivers and Streams
+#https://data.humdata.org/dataset/sri-lanka-water-bodies-0-0?#
+#unzip("lka_rapidsl_rvr_250k_sdlka.zip")
+#rivers <- st_read("lka_rapidsl_rvr_250k_sdlka.shp")
+#saveRDS(rivers, "rivers.rds")
+# Above code is from https://github.com/thiyangt/30DayMapChallenge/blob/main/17_day.R
+#take rivers.rds from https://github.com/thiyangt/30DayMapChallenge/blob/main/17_day.R
+rivers <- readRDS("~/Lecturer/ceylon/data-raw/rivers.rds")
+rivers <- rivers |> st_transform(5235)
+rivers <- rivers |>
+  dplyr::select(CODE, NAME, geometry)
+save(rivers, file="data/rivers.rda", compress='xz')
