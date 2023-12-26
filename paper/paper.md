@@ -21,7 +21,7 @@ affiliations:
 
 # Summary
 
-The rapid evolution in the fields of computer science, data science and Artificial Intelligence has significantly transformed the utilization of data for decision making. Data visualisation plays a critical role in any work that involves data. Visualizing data on maps is frequently encountered in many fields. Visualizing data on maps not only transforms raw data into visually comprehensible representations but also convert complex spatial information into simple understandable form. Locating data files necessary for map creation can be a challenging task. Establishing a centralized repository can alleviate the challenging task of finding shape files, providing  users to efficiently discover and access geographic data. The  ceylon R package is  designed to make  simple features data related to Sri Lanka's administrative boundaries and rivers and streams accessible for a diverse range of R [@r] users. With straightforward functionalities, this package allows users to quickly plot and explore administrative boundaries and rivers and streams in Sri Lanka.
+The rapid evolution in the fields of computer science, data science and Artificial Intelligence has significantly transformed the utilization of data for decision making. Data visualisation plays a critical role in any work that involves data. Visualizing data on maps is frequently encountered in many fields. Visualizing data on maps not only transforms raw data into visually comprehensible representations but also convert complex spatial information into simple understandable form. Locating data files necessary for map creation can be a challenging task. Establishing a centralized repository can alleviate the challenging task of finding shape files, providing  users to efficiently discover geographic data. The  ceylon [@ceylon] R package is  designed to make  simple features data related to Sri Lanka's administrative boundaries and rivers and streams accessible for a diverse range of R [@r] users. With straightforward functionalities, this package allows users to quickly plot and explore administrative boundaries and rivers and streams in Sri Lanka.
 
 
 
@@ -29,12 +29,12 @@ The rapid evolution in the fields of computer science, data science and Artifici
 # Statement of Need
 
 
-The `ceylon` R package conveniently packages shape files corresponding to the geographic features of Sri Lanka, enhancing user-friendliness for seamless integration and analysis. This allows minimizing the time spent on data searching and cleaning efforts and Hence, the package ceylon stands out as a catalyst for research efficiency.Furthermore, the package support for research reproducibility allowing others to independently verify and build upon the work that utilize the data in this package.
+The `ceylon` R package conveniently packages shape files corresponding to the geographic features of Sri Lanka, enhancing user-friendliness for seamless integration and analysis. This allows minimizing the time spent on data searching and cleaning efforts and Hence, the package ceylon stands out as a catalyst for research efficiency.Furthermore, the package support for research reproducibility allowing others to independently verify and build upon the work that utilize the data in this package. The data format easily integrates with tidyverse packages [@tidyverse], fostering a smooth workflow.
 
 # Datasets available in the package
 
 | dataset  | description  |  data source  |
-|---|---|---|---|
+|---|---|---|
 | sf_sl_0  |  country boundary | https://data.humdata.org/    |
 |province   | province boundaries  | https://data.humdata.org/   |
 |district   | district boundaries  | https://data.humdata.org/   |
@@ -62,9 +62,10 @@ library(ggplot2)
 library(sp)
 library(sf)
 library(viridis)
+library(patchwork)
 ```
 
-The package ggplot2[@ggplot2] is used for data visualization. The sp[@sp] provides tools for handling spatial data. The sf simple features[@sf]  builds upon the strengths of the sp package, introducing  efficient approach to handling spatial data.The viridis [@viridis] package provides a collection of color palettes that are color blind friendly.
+The package ggplot2[@ggplot2] is used for data visualization. The sp[@sp] provides tools for handling spatial data. The sf simple features[@sf]  builds upon the strengths of the sp package, introducing  efficient approach to handling spatial data.The viridis [@viridis] package provides a collection of color palettes that are color blind friendly.The patchwork [@patchwork] is used for combination and arrangement of multiple plots.
 
 ```r
 data(sf_sl_0)
@@ -78,7 +79,6 @@ d <- ggplot(sf_sl_3) + geom_sf() + ggtitle("d: Divisional Secretariat")
 ```
 
 ```r
-library(patchwork)
 (a|b|c|d)
 ```
 
