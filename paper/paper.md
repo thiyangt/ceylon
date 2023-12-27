@@ -30,7 +30,7 @@ The rapid evolution in the fields of computer science, data science, and artific
 The `ceylon` R package conveniently packages shape files corresponding to the geographic features of Sri Lanka, enhancing user friendliness for seamless integration and analysis. This allows for minimising the time spent on data searching and cleaning efforts. Hence, the package ceylon stands out as a catalyst for research efficiency. Furthermore, the package supports research reproducibility, allowing others to independently verify and build upon the work that utilised the data in this package. The data format easily integrates with tidyverse packages [@tidyverse], fostering a smooth workflow.
 
 
-# Datasets available in the package
+# Datasets Available in the Package
 
 The data were retrieved from the   @humdata. The Humanitarian Data Exchange is a platform that facilitates the sharing and collaboration of humanitarian data. The coordinate reference system (CRS) for the data is "Projected CRS: SLD99 / Sri Lanka Grid 1999 (CRS code 5234)". Table 1 provides a description of datasets.
 
