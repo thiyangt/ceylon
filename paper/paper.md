@@ -27,12 +27,12 @@ The rapid evolution in the fields of computer science, data science, and artific
 
 # Statement of Need
 
-The `ceylon` R package conveniently packages shape files corresponding to the geographic features of Sri Lanka, enhancing user friendliness for seamless integration and analysis. This allows for minimising the time spent on data searching and cleaning efforts. Hence, the package ceylon stands out as a catalyst for research efficiency. Furthermore, the package supports research reproducibility, allowing others to independently verify and build upon the work that utilises the data in this package. The data format easily integrates with tidyverse packages [@tidyverse], fostering a smooth workflow.
+The `ceylon` R package conveniently packages shape files corresponding to the geographic features of Sri Lanka, enhancing user friendliness for seamless integration and analysis. This allows for minimising the time spent on data searching and cleaning efforts. Hence, the package ceylon stands out as a catalyst for research efficiency. Furthermore, the package supports research reproducibility, allowing others to independently verify and build upon the work that utilised the data in this package. The data format easily integrates with tidyverse packages [@tidyverse], fostering a smooth workflow.
 
 
 # Datasets available in the package
 
-The data were retrieved from the   @humdata. The Humanitarian Data Exchange is a platform that facilitates the sharing and collaboration of humanitarian data. The coordinate reference system (CRS) for the data is "Projected CRS: SLD99 / Sri Lanka Grid 1999 (CRS code 5234)".
+The data were retrieved from the   @humdata. The Humanitarian Data Exchange is a platform that facilitates the sharing and collaboration of humanitarian data. The coordinate reference system (CRS) for the data is "Projected CRS: SLD99 / Sri Lanka Grid 1999 (CRS code 5234)". Table 1 provides a description of datasets.
 
 | dataset  | description  |  data source  |
 |---|---|---|
@@ -70,7 +70,7 @@ library(viridis)
 library(patchwork)
 ```
 
-The package ggplot2[@ggplot2] is used for data visualization. The sp[@sp] provides tools for handling spatial data. The sf simple features[@sf]  builds upon the strengths of the sp package, introducing  efficient approach to handling spatial data.The viridis [@viridis] package provides a collection of color palettes that are color blind friendly.The patchwork [@patchwork] is used for the combination and arrangement of multiple plots. Figure 1 shows the visualizations of  Sri Lanka's administrative borders data available in the `ceylon` package. The codes to produce Figure 1 is given below.
+The package ggplot2 [@ggplot2] is used for data visualization. The sp [@sp] provides tools for handling spatial data. The sf simple features [@sf]  builds upon the strengths of the sp package, introducing  efficient approach to handling spatial data. The viridis [@viridis] package provides a collection of color palettes that are color blind friendly. The patchwork [@patchwork] package is used for the combination and arrangement of multiple plots. Figure 1 shows the visualizations of  Sri Lanka's administrative borders based on data available in the `ceylon` package. The codes to produce Figure 1 is given below.
 
 ```r
 data(sf_sl_0)
@@ -107,6 +107,8 @@ point <- ggplot(province) +
 
 ## Line Map: Plot rivers and streams in Sri Lanka
 
+This section illustrates an example of using the rivers dataset in the package ceylon.
+
 ```r
 data("rivers")
 line <- ggplot(data = sf_sl_0) +
@@ -129,11 +131,13 @@ polygon <- ggplot(province) +
 (point|line|polygon)
 ```
 
-Figure 2 shows the point, line, and polygon maps created using the data available in the `ceylon` package.
+Figure 2 shows the above point, line, and polygon maps created using the data available in the `ceylon` package.
 
 
 
 ![Illustration of point, line and polygon map  \label{fig: img2}](Rplot2.png)
+
+The above examples illustrate the datasets available in the package, which are easily integrated with other companion packages that are widely used in spatial analysis and data visualisation.
 
 \newpage
 
