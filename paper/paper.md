@@ -20,14 +20,14 @@ affiliations:
 
 # Summary
 
-The rapid evolution in the fields of computer science, data science, and artificial intelligence has significantly transformed the utilisation of data for decision-making. Data visualisation plays a critical role in any work that involves data. Visualising data on maps is frequently encountered in many fields. Visualising data on maps not only transforms raw data into visually comprehensible representations but also converts complex spatial information into simple, understandable form. Locating the data files necessary for map creation can be a challenging task. Establishing a centralised repository can alleviate the challenging task of finding shape files, allowing users to efficiently discover geographic data. The ceylon [@ceylon] R package is designed to make simple feature data related to Sri Lanka's administrative boundaries and rivers and streams accessible for a diverse range of R [@r] users. With straightforward functionalities, this package allows users to quickly plot and explore administrative boundaries and rivers and streams in Sri Lanka.
+The rapid evolution in the fields of computer science, data science, and artificial intelligence has significantly transformed the utilisation of data for decision-making. Data visualisation plays a critical role in any work that involves data. Visualising data on maps is frequently encountered in many fields. Visualising data on maps not only transforms raw data into visually comprehensible representations but also converts complex spatial information into simple, understandable form. Locating the data files necessary for map creation can be a challenging task. Establishing a centralised repository can alleviate the challenging task of finding shape files, allowing users to efficiently discover geographic data. The ceylon [@talagala2023ceylon] R package is designed to make simple feature data related to Sri Lanka's administrative boundaries and rivers and streams accessible for a diverse range of R [@team2023r] users. With straightforward functionalities, this package allows users to quickly plot and explore administrative boundaries and rivers and streams in Sri Lanka.
 
 
 
 
 # Statement of Need
 
-The `ceylon` R package conveniently packages shape files corresponding to the geographic features of Sri Lanka, enhancing user friendliness for seamless integration and analysis. This allows for minimising the time spent on data searching and cleaning efforts. Hence, the package ceylon stands out as a catalyst for research efficiency. Furthermore, the package supports research reproducibility, allowing others to independently verify and build upon the work that utilised the data in this package. The data format easily integrates with tidyverse packages [@tidyverse], fostering a smooth workflow.
+The `ceylon` R package conveniently packages shape files corresponding to the geographic features of Sri Lanka, enhancing user friendliness for seamless integration and analysis. This allows for minimising the time spent on data searching and cleaning efforts. Hence, the package ceylon stands out as a catalyst for research efficiency. Furthermore, the package supports research reproducibility, allowing others to independently verify and build upon the work that utilised the data in this package. The data format easily integrates with tidyverse packages [@wickham2019welcome], fostering a smooth workflow.
 
 
 # Datasets Available in the Package
@@ -70,7 +70,7 @@ library(viridis)
 library(patchwork)
 ```
 
-The package ggplot2 [@ggplot2] is used for data visualization. The sp [@sp] provides tools for handling spatial data. The sf simple features [@sf]  builds upon the strengths of the sp package, introducing  efficient approach to handling spatial data. The viridis [@viridis] package provides a collection of color palettes that are color blind friendly. The patchwork [@patchwork] package is used for the combination and arrangement of multiple plots. Figure 1 shows the visualizations of  Sri Lanka's administrative borders based on data available in the `ceylon` package. The codes to produce Figure 1 is given below.
+The package ggplot2 [@wickham2016ggplot2] is used for data visualization. The sp [@pebesma2005classes] provides tools for handling spatial data. The sf simple features [@pebesma2018simple]  builds upon the strengths of the sp package, introducing  efficient approach to handling spatial data. The viridis [@r2023viridis] package provides a collection of color palettes that are color blind friendly. The patchwork [@pedersen2023patchwork] package is used for the combination and arrangement of multiple plots. Figure 1 shows the visualizations of  Sri Lanka's administrative borders based on data available in the `ceylon` package. The codes to produce Figure 1 is given below.
 
 ```r
 data(sf_sl_0)
@@ -90,7 +90,7 @@ d <- ggplot(sf_sl_3) + geom_sf() + ggtitle("d: Divisional Secretariat")
 
 ## Point Map: Adding a point to the map
 
-The Global Positioning System (GPS) coordinates of Bandaranaike International Airport, Sri Lanka is Latitude: 7.1753 Longitude: 79.8835. The goal is to plot this point along with the province boundaries. The EPSG:4326 geographic CRS system gives latitude and longitude coordinates to specify a location on the surface of the earth. Hence, before plotting, first longitude and latitudes should be converted into sf object to the same coordinate reference system as the province data set. For this the sp [@sp] and sf [@sf] packages in R were used. In the following code `st_as_sf` specify the current coordinate reference system for longitude and latitude. The function `st_transform` converts the current CRS to the target CRS. The target CRS is the CRS associated with the province, which is defined as `crs = st_crs(province)` inside the'st_transform' function.
+The Global Positioning System (GPS) coordinates of Bandaranaike International Airport, Sri Lanka is Latitude: 7.1753 Longitude: 79.8835. The goal is to plot this point along with the province boundaries. The EPSG:4326 geographic CRS system gives latitude and longitude coordinates to specify a location on the surface of the earth. Hence, before plotting, first longitude and latitudes should be converted into sf object to the same coordinate reference system as the province data set. For this the sp [@pebesma2005classes] and sf [@pebesma2018simple] packages in R were used. In the following code `st_as_sf` specify the current coordinate reference system for longitude and latitude. The function `st_transform` converts the current CRS to the target CRS. The target CRS is the CRS associated with the province, which is defined as `crs = st_crs(province)` inside the'st_transform' function.
 
 ```r
 airport <- data.frame(lng = 79.8835, lat = 7.1753)
@@ -139,7 +139,7 @@ Figure 2 shows the above point, line, and polygon maps created using the data av
 
 The above examples illustrate the datasets available in the package, which are easily integrated with other companion packages that are widely used in spatial analysis and data visualisation.
 
-\newpage
+
 
 # Acknowledgements
 
