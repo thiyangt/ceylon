@@ -31,11 +31,8 @@ You can install the development version from [GitHub](https://github.com/) with:
 # install.packages("devtools")
 devtools::install_github("thiyangt/ceylon")
 ```
-## Example
 
-This is a basic example which shows you how to solve a common problem:
-
-### 1. Country level
+## 1. Country level
 
 ```{r example}
 library(ceylon)
@@ -46,35 +43,30 @@ data(sf_sl_0)
 ggplot(sf_sl_0) + geom_sf()
 ```
 
-### 2. Provinces of Sri Lanka
+## 2. Provinces of Sri Lanka
 
 ```{r example0}
 data(province)
 province
-ggplot(province) + geom_sf(mapping = aes(fill = PROVINCE), show.legend = TRUE)
+ggplot(province) + geom_sf(mapping = aes(), show.legend = TRUE)
 ```
 
-### 3. Distribution of Population by Provinces
 
-```{r example1}
-ggplot(province) + geom_sf(mapping = aes(fill = population), show.legend = TRUE) + scale_fill_viridis(option = "inferno")
-```
-
-### 4. Distribution of Population by Districts
+## 3. Districts in Sri Lanka
 
 ```{r example2}
 data(district)
-ggplot(district) + geom_sf(aes(fill = population), show.legend = TRUE) +  scale_fill_viridis()
+ggplot(district) + geom_sf() +  scale_fill_viridis()
 ```
 
-### 5. Divisional secretariat
+## 4. Divisional secretariats in Sri Lanka
 
 ```{r example3}
 data(sf_sl_3)
 ggplot(sf_sl_3) + geom_sf()
 ```
 
-### Plotting river network
+## 5. Plotting river network in Sri Lanka
 
 ```{r}
 data("rivers")
@@ -84,9 +76,58 @@ ggplot(data = sf_sl_0) +
   labs(title =  "Sri Lanka Rivers and Streams")
 ```
 
+## Making different types of Maps
+
+### Choropleth Map
+
+```{r}
+ggplot(province) + 
+  geom_sf(mapping = aes(fill = population), show.legend = TRUE) + scale_fill_viridis()
+```
+
+### Contiguous Cartogram
+
+```{r, carto}
+library(cartogram)
+library(sf)
+library(sp)
+cont <- cartogram_cont(province,
+                       weight = "population") |>
+                      st_as_sf()
+ggplot(cont) + 
+  geom_sf(aes(fill = population), colour = "white") + scale_fill_viridis()
+```
+
+### Non-Contiguous Cartogram
+
+```{r, ncont}
+ncont <- cartogram_ncont(province,
+                       weight = "population") |>
+                      st_as_sf()
+ggplot(ncont) + 
+  geom_sf(data = province) +
+  geom_sf(aes(fill = population), colour = "white") + scale_fill_viridis()
+```
+
+### Dorling Cartogram
+
+```{r, dorl}
+dorl <- cartogram_dorling(province,
+                       weight = "population") |>
+                      st_as_sf()
+ggplot(dorl) + 
+  geom_sf(data = province) +
+  geom_sf(aes(fill = population), colour = "white") + scale_fill_viridis()
+```
+
 ## Cite
 
 Talagala, T. S. (2023). ceylon: Creating Maps of Sri Lanka Administrative Regions, Rivers and Streams. Zenodo. https://doi.org/10.5281/zenodo.10432141
+
+### Working paper
+
+Talagala, T. S. (2024). ceylon: An R package for plotting the maps of Sri Lanka. arXiv preprint arXiv:2401.02467.
+
 
 ### Acknowledgement
 
