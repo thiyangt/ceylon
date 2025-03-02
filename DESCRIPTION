@@ -9,8 +9,8 @@ Authors@R:
            comment = c(ORCID = "0000-0002-0656-9789"))
 Description: Map of Sri Lanka administrative regions, 0-country, 1-province, 2-district and 3-divisional secretariat. R functions for  choropleths and other related maps.
 Depends: R (>= 3.5.0)
-License: CC BY 4.0
+License: GPL-3 + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
